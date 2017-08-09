@@ -2,6 +2,12 @@ class SplashController < ApplicationController
   skip_before_action :authenticate
   before_filter :authenticate_user!
 
+  def get_timesheet_atom
+    @category = Category.find params[:modal_category_id]
+    @task = Task.find params[:modal_task_id]
+    render partial: 'splash/timesheet_atom', locals: {category: @category, task: @task}
+  end
+
   def index
     @current_week_projects = current_user.current_week_projects
   end

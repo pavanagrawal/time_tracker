@@ -4,9 +4,9 @@
 %tr.week-view-entry{:style => "display: table-row;"}
   %td.name
     .project-client
-      %span.project Agewize SOW 03132017
-      %span.client (Agewize)
-    .task Engineering
+      %span.project= @task.project.name
+      %span.client="(#{@task.name})"
+    .task=@category.name
   - while(current_date <= week_end_date) do
     %td.day.test-not-today
       %input.docker-input.js-compound-entry{:tabindex => "1", :type => "text", :value => ""}/

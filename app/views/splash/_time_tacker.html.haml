@@ -3,7 +3,8 @@
     %table.table-striped.week-view-table
       %thead
         = render partial: 'splash/plot_header'
-      %tbody
-        = render partial: 'splash/timesheet_atom'
+      %tbody#time_sheet_container
+
       %tfoot
         = render partial:  'plot_footer'
+= render partial: 'splash/category_picker'

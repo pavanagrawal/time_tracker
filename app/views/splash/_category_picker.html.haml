@@ -1,0 +1,24 @@
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title Pick Category
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body.modal_message
+      - # Project Tasks slection
+      -  grouped_task_options= @current_week_projects.map do |project|
+        - [project.name, project.tasks.collect{|t| [t.name, t.id]}]
+
+      - grouped_category_options = Category.parent_nodes.map do |parent|
+        - [parent.name, parent.children.collect{|c| [c.name, c.id]}]
+
+      .modal-body
+        = select_tag "modal_category_id", grouped_options_for_select(grouped_category_options), include_blank: true, class: "form-control"
+
+      - # Category selection
+      .modal-body
+        = select_tag "modal_task_id", grouped_options_for_select(grouped_task_options), include_blank: true, class: "form-control"
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-primary#select_category_button{:type => "button"} Save changes

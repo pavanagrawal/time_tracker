@@ -12,8 +12,8 @@ class Category < ApplicationRecord
 
   has_many :children, :class_name => 'Category', :foreign_key => 'parent_id'
   belongs_to :parent, :class_name => 'Category', :foreign_key => 'parent_id'
-  # named_scope :leaf_nodes, :conditions => 'parent_id IS NOT NULL'
-  # named_scope :parent_nodes, :conditions => 'parent_id IS NULL'
+  scope :leaf_nodes, -> {where('parent_id IS NOT NULL')}
+  scope :parent_nodes, -> {where('parent_id IS NULL')}
 
   has_many :time_trackers
 
