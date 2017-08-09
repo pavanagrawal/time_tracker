@@ -2,10 +2,29 @@ class SplashController < ApplicationController
   skip_before_action :authenticate
   before_filter :authenticate_user!
 
+  skip_before_action :verify_authenticity_token
+
   def get_timesheet_atom
     @category = Category.find params[:modal_category_id]
     @task = Task.find params[:modal_task_id]
     render partial: 'splash/timesheet_atom', locals: {category: @category, task: @task}
+  end
+
+  def post_timesheet
+    params[:mins].each {|key, value|
+      begin
+        task_id, category_id, timesheet_date = key.split('$')
+        puts "timesheet_date #{timesheet_date}"
+        timesheet_date = Date.parse(timesheet_date, '%m-%d-%Y')
+        mins = value
+        time_track = current_user.time_trackers.find_or_create_by(task_id: task_id, category_id: category_id, billable_date: timesheet_date)
+        time_track.update(time_consumed: mins.to_i)
+      rescue => e
+        next
+      end
+    }
+
+    render :text => 'Timesheet submitted successfully!'
   end
 
   def index

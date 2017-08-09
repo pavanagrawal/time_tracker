@@ -35,6 +35,8 @@ class User < ApplicationRecord
 
   has_many :current_week_allocations, through: :allocations
 
+  has_many :time_trackers
+
 
   def current_week_projects
     d = Date.today

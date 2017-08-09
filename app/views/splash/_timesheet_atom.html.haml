@@ -9,7 +9,7 @@
     .task=@category.name
   - while(current_date <= week_end_date) do
     %td.day.test-not-today
-      %input.docker-input.js-compound-entry{:tabindex => "1", :type => "text", :value => ""}/
+      %input.docker-input.js-compound-entry{:tabindex => "1", :type => "text", :value => "", name: "mins[#{@task.id}$#{@category.id}$#{current_date.strftime('%m-%d-%Y')}]"}/
     - current_date += 1
   %td.total 3:00
   %td.delete.js-end-of-week-row.test-zero-hours

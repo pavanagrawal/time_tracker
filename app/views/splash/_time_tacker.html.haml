@@ -1,10 +1,10 @@
 .container
   %section.primary#about
-    %table.table-striped.week-view-table
-      %thead
-        = render partial: 'splash/plot_header'
-      %tbody#time_sheet_container
-
-      %tfoot
-        = render partial:  'plot_footer'
+    = form_tag(splash_post_timesheet_path, method: :put, id: 'timesheet_form') do
+      %table.table-striped.week-view-table
+        %thead
+          = render partial: 'splash/plot_header'
+        %tbody#time_sheet_container
+        %tfoot
+          = render partial:  'plot_footer'
 = render partial: 'splash/category_picker'
