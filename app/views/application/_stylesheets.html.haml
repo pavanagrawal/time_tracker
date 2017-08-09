@@ -1,0 +1,7 @@
+= stylesheet_link_tag 'application', :media => nil
+= stylesheet_link_tag 'form-render.min', :media => nil
+= stylesheet_link_tag 'form-builder.min', :media => nil
+
+
+-# Append your own using content_for :stylesheets
+= yield :stylesheets

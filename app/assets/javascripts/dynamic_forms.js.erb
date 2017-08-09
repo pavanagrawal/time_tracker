@@ -1,0 +1,47 @@
+
+jQuery(document).ready(function ($) {
+    var demoFormData = $('#form_data_hidden').val();
+    var buildWrap = document.querySelector('.build-wrap'),
+        renderWrap = document.querySelector('.render-wrap'),
+        editBtn = document.getElementById('edit-form'),
+        formData = demoFormData,
+        editing = true,
+        fbOptions = {
+            dataType: 'json'
+        };
+
+    if (formData) {
+        fbOptions.formData = formData;
+    }
+
+    var formBuilder = $(buildWrap).formBuilder(fbOptions).data('formBuilder');
+
+    $('.form-builder-save').click(function () {
+
+
+        console.log("Save button clicked");
+        console.log(formBuilder.formData);
+
+        $.ajax({
+            statusCode: {
+                404: function () {
+                    alert("page not found");
+                }
+            },
+            url: "<%= Rails.application.routes.url_helpers.dynamic_forms_preserve_form_data_path%>",
+            type: "POST",
+            data: {form_data: formBuilder.formData}
+        }).done(function (data) {
+          alert("Form Saved!");
+        });
+
+    });
+
+    // editBtn.onclick = function() {
+    //     toggleEdit();
+    // };
+    $(document.querySelector('#render-wrap')).formRender({
+        dataType: 'json',
+        formData: demoFormData
+    });
+});
