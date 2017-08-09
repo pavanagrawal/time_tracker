@@ -1,0 +1,151 @@
+%section.lightimage
+  %table.week-view-table{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+    %thead
+      %tr
+        %td.name
+        %td.day
+          %a.js-backbone.test-Monday.js-day.test-not-today{"aria-label" => "Monday, 07 August", :href => "/time/day/2017/08/07/1045541", :tabindex => "1", :title => "Monday"}
+            M
+            %span 07 Aug
+        %td.day
+          %a.js-backbone.test-Tuesday.js-day.test-not-today{"aria-label" => "Tuesday, 08 August", :href => "/time/day/2017/08/08/1045541", :tabindex => "1", :title => "Tuesday"}
+            T
+            %span 08 Aug
+        %td.day
+          %a.js-backbone.test-Wednesday.js-day.is-today{"aria-label" => "Wednesday, 09 August", :href => "/time/day/2017/08/09/1045541", :tabindex => "1", :title => "Wednesday"}
+            W
+            %span 09 Aug
+        %td.day
+          %a.js-backbone.test-Thursday.js-day.test-not-today{"aria-label" => "Thursday, 10 August", :href => "/time/day/2017/08/10/1045541", :tabindex => "1", :title => "Thursday"}
+            Th
+            %span 10 Aug
+        %td.day
+          %a.js-backbone.test-Friday.js-day.test-not-today{"aria-label" => "Friday, 11 August", :href => "/time/day/2017/08/11/1045541", :tabindex => "1", :title => "Friday"}
+            F
+            %span 11 Aug
+        %td.day
+          %a.js-backbone.test-Saturday.js-day.test-not-today{"aria-label" => "Saturday, 12 August", :href => "/time/day/2017/08/12/1045541", :tabindex => "1", :title => "Saturday"}
+            S
+            %span 12 Aug
+        %td.day
+          %a.js-backbone.test-Sunday.js-day.test-not-today{"aria-label" => "Sunday, 13 August", :href => "/time/day/2017/08/13/1045541", :tabindex => "1", :title => "Sunday"}
+            Su
+            %span 13 Aug
+        %td.total  
+        %td.delete  
+    %tfoot
+      %tr
+        %td.name
+          %button.hui-button.button-new.button-new-row.test-button-new-row.js-new-week-row{:tabindex => "2", :type => "button"} New Row
+          %button.hui-button.hui-button-primary.test-week-view-save.hui-button-disabled{:tabindex => "1", :type => "button"} Save
+          %span.last-saved.do-not-print Last saved at 12:43pm
+        %td.day.test-not-today.test-day-total-1 7:00
+        %td.day.test-not-today.test-day-total-2 6:30
+        %td.day.today.test-day-total-3 0
+        %td.day.test-not-today.test-day-total-4 8:00
+        %td.day.test-not-today.test-day-total-5 0
+        %td.day.test-not-today.test-day-total-6 0
+        %td.day.test-not-today.test-day-total-0 0
+        %td.total 21:30
+        %td.delete  
+    %tbody
+      %tr.week-view-entry{"data-project-id" => "13393661", "data-task-id" => "4466697", :style => "display: table-row;"}
+        %td#project13393661-task4466697.name
+          .project-client
+            %span.project Agewize SOW 03132017
+            %span.client (Agewize)
+          .task Engineering
+        %td.day.test-not-today
+          %input.hui-input.js-compound-entry{"aria-describedby" => "project13393661-task4466697", "aria-label" => "Hours on Monday, 07 August", "data-unique-name" => "day219_project13393661_task4466697", :tabindex => "1", :type => "text", :value => ""}/
+        %td.day.test-not-today
+          %input.hui-input.js-compound-entry{"aria-describedby" => "project13393661-task4466697", "aria-label" => "Hours on Tuesday, 08 August", "data-unique-name" => "day220_project13393661_task4466697", :tabindex => "1", :type => "text", :value => ""}/
+        %td.day.is-today
+          %input.hui-input.js-compound-entry{"aria-describedby" => "project13393661-task4466697", "aria-label" => "Hours on Wednesday, 09 August", "data-unique-name" => "day221_project13393661_task4466697", :tabindex => "1", :type => "text", :value => ""}/
+        %td.day.test-not-today
+          %input.hui-input.js-compound-entry{"aria-describedby" => "project13393661-task4466697", "aria-label" => "Hours on Thursday, 10 August", "data-unique-name" => "day222_project13393661_task4466697", :tabindex => "1", :type => "text", :value => ""}/
+        %td.day.test-not-today
+          %input.hui-input.js-compound-entry{"aria-describedby" => "project13393661-task4466697", "aria-label" => "Hours on Friday, 11 August", "data-unique-name" => "day223_project13393661_task4466697", :tabindex => "1", :type => "text", :value => ""}/
+        %td.day.test-not-today
+          %input.hui-input.js-compound-entry{"aria-describedby" => "project13393661-task4466697", "aria-label" => "Hours on Saturday, 12 August", "data-unique-name" => "day224_project13393661_task4466697", :tabindex => "1", :type => "text", :value => ""}/
+        %td.day.test-not-today
+          %input.hui-input.js-compound-entry{"aria-describedby" => "project13393661-task4466697", "aria-label" => "Hours on Sunday, 13 August", "data-unique-name" => "day225_project13393661_task4466697", :tabindex => "1", :type => "text", :value => ""}/
+        %td.total 3:00
+        %td.delete.js-end-of-week-row.test-zero-hours
+          %button.hui-button.hui-button-tiny.button-icon-only.week-row-delete.js-remove-row{:tabindex => "1", :title => "Delete Row", :type => "button"}
+            %i{"data-icon" => "x"}
+          .popover.popover-confirm.is-down-right.popover-week-delete{"aria-hidden" => "true"}
+            %p Remove entries from timesheet?
+            .buttons
+              %button.hui-button.hui-button-small.hui-button-important.js-confirm-delete-entry.js-bubble{:type => "button"} Delete
+              %button.hui-button.hui-button-small.hui-button-cancel.js-cancel-delete-entry.js-bubble{:type => "button"} Cancel
+      %tr.week-view-entry{"data-project-id" => "14056370", "data-task-id" => "6081970"}
+        %td#project14056370-task6081970.name
+          .project-client
+            %span.project WeLiv T&amp;M SOW 05262017
+            %span.client (Weliv)
+          .task Back end Engineering
+        %td.day.test-not-today
+          %input.hui-input.js-compound-entry{"aria-describedby" => "project14056370-task6081970", "aria-label" => "Hours on Monday, 07 August", "data-unique-name" => "day219_project14056370_task6081970", :tabindex => "1", :type => "text", :value => "7:00"}/
+        %td.day.test-not-today
+          %input.hui-input.js-compound-entry{"aria-describedby" => "project14056370-task6081970", "aria-label" => "Hours on Tuesday, 08 August", "data-unique-name" => "day220_project14056370_task6081970", :tabindex => "1", :type => "text", :value => "6:30"}/
+        %td.day.is-today
+          %input.hui-input.js-compound-entry{"aria-describedby" => "project14056370-task6081970", "aria-label" => "Hours on Wednesday, 09 August", "data-unique-name" => "day221_project14056370_task6081970", :tabindex => "1", :type => "text", :value => ""}/
+        %td.day.test-not-today
+          %input.hui-input.js-compound-entry{"aria-describedby" => "project14056370-task6081970", "aria-label" => "Hours on Thursday, 10 August", "data-unique-name" => "day222_project14056370_task6081970", :tabindex => "1", :type => "text", :value => ""}/
+        %td.day.test-not-today
+          %input.hui-input.js-compound-entry{"aria-describedby" => "project14056370-task6081970", "aria-label" => "Hours on Friday, 11 August", "data-unique-name" => "day223_project14056370_task6081970", :tabindex => "1", :type => "text", :value => ""}/
+        %td.day.test-not-today
+          %input.hui-input.js-compound-entry{"aria-describedby" => "project14056370-task6081970", "aria-label" => "Hours on Saturday, 12 August", "data-unique-name" => "day224_project14056370_task6081970", :tabindex => "1", :type => "text", :value => ""}/
+        %td.day.test-not-today
+          %input.hui-input.js-compound-entry{"aria-describedby" => "project14056370-task6081970", "aria-label" => "Hours on Sunday, 13 August", "data-unique-name" => "day225_project14056370_task6081970", :tabindex => "1", :type => "text", :value => ""}/
+        %td.total 18:30
+        %td.delete.js-end-of-week-row
+          %button.hui-button.hui-button-tiny.button-icon-only.week-row-delete.js-remove-row{:tabindex => "1", :title => "Delete Row", :type => "button"}
+            %i{"data-icon" => "x"}
+          .popover.popover-confirm.is-down-right.popover-week-delete{"aria-hidden" => "true"}
+            %p Remove entries from timesheet?
+            .buttons
+              %button.hui-button.hui-button-small.hui-button-important.js-confirm-delete-entry.js-bubble{:type => "button"} Delete
+              %button.hui-button.hui-button-small.hui-button-cancel.js-cancel-delete-entry.js-bubble{:type => "button"} Cancel
+  %table.week-view-table.floating-week-view-table.do-not-print{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "position: fixed; top: 0px; width: 980px; display: none;"}
+    %thead
+      %tr
+        %td.name
+        %td.day
+          %a.js-backbone.test-Monday.js-day.test-not-today{"aria-label" => "Monday, 07 August", :href => "/time/day/2017/08/07/1045541", :tabindex => "1", :title => "Monday"}
+            M
+            %span 07 Aug
+        %td.day
+          %a.js-backbone.test-Tuesday.js-day.test-not-today{"aria-label" => "Tuesday, 08 August", :href => "/time/day/2017/08/08/1045541", :tabindex => "1", :title => "Tuesday"}
+            T
+            %span 08 Aug
+        %td.day
+          %a.js-backbone.test-Wednesday.js-day.is-today{"aria-label" => "Wednesday, 09 August", :href => "/time/day/2017/08/09/1045541", :tabindex => "1", :title => "Wednesday"}
+            W
+            %span 09 Aug
+        %td.day
+          %a.js-backbone.test-Thursday.js-day.test-not-today{"aria-label" => "Thursday, 10 August", :href => "/time/day/2017/08/10/1045541", :tabindex => "1", :title => "Thursday"}
+            Th
+            %span 10 Aug
+        %td.day
+          %a.js-backbone.test-Friday.js-day.test-not-today{"aria-label" => "Friday, 11 August", :href => "/time/day/2017/08/11/1045541", :tabindex => "1", :title => "Friday"}
+            F
+            %span 11 Aug
+        %td.day
+          %a.js-backbone.test-Saturday.js-day.test-not-today{"aria-label" => "Saturday, 12 August", :href => "/time/day/2017/08/12/1045541", :tabindex => "1", :title => "Saturday"}
+            S
+            %span 12 Aug
+        %td.day
+          %a.js-backbone.test-Sunday.js-day.test-not-today{"aria-label" => "Sunday, 13 August", :href => "/time/day/2017/08/13/1045541", :tabindex => "1", :title => "Sunday"}
+            Su
+            %span 13 Aug
+        %td.total  
+        %td.delete  
+  .timesheet-bottom.clearfix
+    .approval-button
+      %span.js-wrap
+        %button.hui-button.submit-link.js-toggle-approve.test-submit-button{:tabindex => "3", :type => "button"} Submit Week for Approval
+        .approval-confirmation{:style => "display:none;"}
+          Ready to submit this timesheet for approval?
+          %button.hui-button.hui-button-small.hui-button-primary.ml-5.js-submit-for-approval{:type => "button"} Yes, Submit Timesheet
+          %button.hui-button.hui-button-small.hui-button-cancel.js-toggle-approve{:type => "button"} Cancel
