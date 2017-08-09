@@ -25,7 +25,7 @@
     %header.affix-top{ data: { spy: "affix", "offset-top": 10 } }
       = navbar id: "navbar", fluid: true, position: :top, padding: 0 do
         = vertical do
-          = link_to "ClockDocker", "#top"
+          = image_tag('logo.png', width: '70%', height: '70%')
         = horizontal do
           = nav class: 'navbar-right' do
             = link_to current_user.email, "#"
