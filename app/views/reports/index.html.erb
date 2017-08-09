@@ -1,0 +1,377 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-utf-8">
+  <title>Clock Dock Report Console</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+  <%= javascript_include_tag 'highcharts.js' %>
+  <%= javascript_include_tag 'exporting.js' %>
+
+  <!-- 1a) Optional: add a theme file -->
+  <!--
+    <script type="text/javascript" src="../js/themes/gray.js"></script>
+  -->
+
+  <!-- 1b) Optional: the exporting module -->
+
+  <style>
+    .summaryFontStyle {
+      text-align: center;
+      font-size: xx-large;
+      font-family: sans-serif;
+    }
+
+    .summaryHeaderFont {
+      text-align: center;
+      font-size: 19px;
+      font-weight: 100;
+      font-family: "Proxima Nova";
+    }
+
+    .cutomDropDown {
+      float: left;
+      margin-left: 3%;
+    }
+  </style>
+  <script type="text/javascript">
+      $(document).ready(function () {
+
+          populateList('status');
+          populateList('project');
+          populateList('members');
+          populateList('year');
+
+          buildLineChart();
+          buildPieChart();
+          buildProjectPieChart();
+
+          $('.status').click(function (e) {
+              var name = e.currentTarget;
+
+              // $(".status:first-child").text(name.getAttribute("data-name"));
+              // $(".status:first-child").val(name.getAttribute("data-name"));
+          });
+
+      });
+
+      function populateList(filterData) {
+          var myArray = [];
+          var id = '';
+          var className = '';
+          if (filterData == 'status') {
+              id = '#statusMenu';
+              className = 'status';
+              myArray = [
+                  {"label": "Billable", "href": "#"},
+                  {"label": "Non Billable", "href": "#"}
+              ];
+          } else if (filterData == 'project') {
+              id = '#projectMenu';
+              className = 'project';
+              myArray = [
+                  {"label": "Project_1", "href": "#"},
+                  {"label": "Project_2", "href": "#"}
+              ];
+          } else if (filterData == 'members') {
+              id = '#memberMenu';
+              className = 'member';
+              myArray = [
+                  {"label": "Member_1", "href": "#"},
+                  {"label": "Member_2", "href": "#"}
+              ];
+          } else if (filterData == 'year') {
+              id = '#yearMenu';
+              className = 'year';
+              myArray = [
+                  {"label": "2016", "href": "#"},
+                  {"label": "2017", "href": "#"}
+              ];
+          }
+
+          var html = '';
+          // Build the html:
+          $.each(myArray, function (index, item) {
+              if (item.label) {
+                  // normal dropdown item
+                  html += '<li>';
+                  html += '<a class="' + className + '" data-name="' + item.label + '" href="' + item.href + '">' + item.label + '</a>';
+              } else {
+                  // separator
+                  html += '<li role="separator" class="divider">';
+              }
+              html += '</li>';
+          });
+          // Get the <ul> tag reference: (this is just one way; you could also add an "id" attribute to the <ul> directly and use that)
+          var dropdown = $(id).next("ul");
+          // replace it's internal html:
+          dropdown.html(html);
+      }
+
+
+      function buildLineChart() {
+          var chart = new Highcharts.Chart({
+              chart: {
+                  renderTo: 'lineContainer',
+                  defaultSeriesType: 'line',
+                  marginRight: 130,
+                  marginBottom: 25
+              },
+              title: {
+                  text: 'Average Billable Hours by Project - Last 12 Months',
+                  x: -20 //center
+              },
+              subtitle: {
+                  text: 'Average Billable Hours Logged per Day by Projects in the Last 12 Months',
+                  x: -20
+              },
+              xAxis: {
+                  categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+              },
+              yAxis: {
+                  title: {
+                      text: 'Temperature (°C)'
+                  },
+                  plotLines: [{
+                      value: 0,
+                      width: 1,
+                      color: '#808080'
+                  }]
+              },
+              tooltip: {
+                  formatter: function () {
+                      return '<b>' + this.series.name + '</b><br/>' +
+                          this.x + ': ' + this.y + '°C';
+                  }
+              },
+              legend: {
+                  layout: 'vertical',
+                  align: 'right',
+                  verticalAlign: 'top',
+                  x: -10,
+                  y: 100,
+                  borderWidth: 0
+              },
+              series: [{
+                  name: 'BioIQ',
+                  data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+              }, {
+                  name: 'FGL',
+                  data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+              }, {
+                  name: 'Synacor',
+                  data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+              }, {
+                  name: 'Atlantic America',
+                  data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+              }]
+          });
+      }
+
+      function buildPieChart() {
+          var chart = new Highcharts.Chart({
+              chart: {
+                  renderTo: 'pieContainer'
+              },
+              title: {
+                  text: 'Resources'
+              },
+              subtitle: {
+                  text: 'Billable vs Non-Billable',
+                  x: -20
+              },
+              plotArea: {
+                  shadow: null,
+                  borderWidth: null,
+                  backgroundColor: null
+              },
+              tooltip: {
+                  formatter: function () {
+                      return '<b>' + this.point.name + '</b>: ' + this.y + ' %';
+                  }
+              },
+              plotOptions: {
+                  pie: {
+                      allowPointSelect: true,
+                      cursor: 'pointer',
+                      dataLabels: {
+                          enabled: true,
+                          color: '#000000',
+                          connectorColor: '#000000',
+                          formatter: function () {
+                              return '<b>' + this.point.name + '</b>: ' + this.y + ' %';
+                          }
+                      }
+                  }
+              },
+              series: [{
+                  type: 'pie',
+                  name: 'Browser share',
+                  data: [
+                      {
+                          name: 'Billable',
+                          y: 12.8,
+                          sliced: true,
+                          selected: true
+                      },
+                      ['Non-Billable', 2.5],
+                  ]
+              }]
+          });
+      }
+
+      function buildProjectPieChart() {
+          var chart = new Highcharts.Chart({
+              chart: {
+                  renderTo: 'pieProjectContainer'
+              },
+              title: {
+                  text: 'Billable Projects'
+              },
+              plotArea: {
+                  shadow: null,
+                  borderWidth: null,
+                  backgroundColor: null
+              },
+              tooltip: {
+                  formatter: function () {
+                      return '<b>' + this.point.name + '</b>: ' + this.y + ' %';
+                  }
+              },
+              plotOptions: {
+                  pie: {
+                      allowPointSelect: true,
+                      cursor: 'pointer',
+                      dataLabels: {
+                          enabled: true,
+                          color: '#000000',
+                          connectorColor: '#000000',
+                          formatter: function () {
+                              return '<b>' + this.point.name + '</b>: ' + this.y + ' %';
+                          }
+                      }
+                  }
+              },
+              series: [{
+                  type: 'pie',
+                  name: 'Browser share',
+                  data: [
+                      ['BioIQ', 45.0],
+                      ['FGL', 26.8],
+                      {
+                          name: 'Aaron',
+                          y: 12.8,
+                          sliced: true,
+                          selected: true
+                      },
+                      ['AA', 8.5],
+                      ['Synacor', 6.2],
+                      ['Ericsson', 0.7]
+                  ]
+              }]
+          });
+      }
+  </script>
+
+</head>
+<body>
+
+<div class="dashChildPar">
+  <div style="height: auto; overflow: hidden; width: 1136.79px;" holderwidth="1169" colwidth="1.0" colheight="0.07622868605817452:87.76879036355771" elname="dlgBody" class="">
+    <div>
+      <font style="font-family: verdana;" size="6"><br></font>
+    </div>
+    <font style="font-family: verdana;" size="6">Timesheets Dashboard<br></font>
+  </div>
+</div>
+
+<!-- Filter Starts here -->
+
+<div class="container">
+  <div class="dropdown cutomDropDown">
+    <button class="btn btn-default dropdown-toggle status" type="button" id="statusMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">--
+      Select Status --
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="statusMenu"></ul>
+  </div>
+
+  <%
+    grouped_task_options= @current_week_projects.map do |project|
+      [project.name, project.tasks.collect {|t| [t.name, t.id]}]
+    end
+  %>
+  <div class="dropdown cutomDropDown">
+    <%= select_tag "modal_task_id", grouped_options_for_select(grouped_task_options), include_blank: true, class: "form-control" %>
+  </div>
+
+  <div class="dropdown cutomDropDown">
+    <button class="btn btn-default dropdown-toggle year" type="button" id="yearMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">--
+      Select Year --
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="yearMenu"></ul>
+  </div>
+</div>
+<!-- Filter Ends here -->
+
+<div style="height: auto; overflow: hidden; width: 100%;" holderwidth="1169" colwidth="1.0" colheight="0.014:16.119431261770245" elname="dlgBody" class="">
+  <div>
+    <hr style="border-top: 1px solid #CCCCCC;">
+  </div>
+</div>
+
+<div class="row">
+  <table class="table">
+    <thead>
+    <tr>
+      <th class="summaryHeaderFont">Hours billed:</th>
+      <th class="summaryHeaderFont">Avg billable hours / Month</th>
+      <th class="summaryHeaderFont">This Quarter max billed user</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="summaryFontStyle"><b>7</b></td>
+      <td class="summaryFontStyle">800</td>
+      <td class="summaryFontStyle">50</td>
+    </tr>
+    <tbody>
+  </table>
+</div>
+
+<div style="height: auto; overflow: hidden; width: 100%;" holderwidth="1169" colwidth="1.0" colheight="0.014:16.119431261770245" elname="dlgBody" class="">
+  <div>
+    <hr style="border-top: 1px solid #CCCCCC;">
+  </div>
+</div>
+
+<div id="lineContainer" style="height: 400px; margin: 0 auto"></div>
+
+<div style="height: auto; overflow: hidden; width: 100%;" holderwidth="1169" colwidth="1.0" colheight="0.014:16.119431261770245" elname="dlgBody" class="">
+  <div>
+    <hr style="border-top: 1px solid #CCCCCC;">
+  </div>
+</div>
+
+<div class="row">
+  <div id="pieContainer" class="col-xs-6"></div>
+  <div id="pieProjectContainer" class="col-xs-6"></div>
+</div>
+
+
+</body>
+
+
+</html>

@@ -9,7 +9,6 @@
       - # Project Tasks slection
       -  grouped_task_options= @current_week_projects.map do |project|
         - [project.name, project.tasks.collect{|t| [t.name, t.id]}]
-
       - grouped_category_options = Category.parent_nodes.map do |parent|
         - [parent.name, parent.children.collect{|c| [c.name, c.id]}]
 

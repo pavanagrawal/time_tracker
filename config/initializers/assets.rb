@@ -11,4 +11,4 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( splash.css scrollReveal.js )
 Rails.application.config.assets.precompile += %w( form-render.min.css )
-Rails.application.config.assets.precompile += %w( form-builder.min.css dynamic_forms.css time_tracker.css)
+Rails.application.config.assets.precompile += %w( form-builder.min.css dynamic_forms.css time_tracker.css highcharts.js exporting.js)
