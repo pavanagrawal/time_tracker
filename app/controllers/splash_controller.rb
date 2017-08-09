@@ -1,6 +1,6 @@
 class SplashController < ApplicationController
   skip_before_action :authenticate
-  # before_filter :authenticate_user!
+  before_filter :authenticate_user!
   
   def index
   end
