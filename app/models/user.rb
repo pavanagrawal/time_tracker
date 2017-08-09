@@ -31,6 +31,9 @@ class User < ApplicationRecord
 
   has_many :allocations
 
+  def name
+    email
+  end
 
   def password_required?
     return false if email.blank? || !email_required?
@@ -40,7 +43,7 @@ class User < ApplicationRecord
   def email_required?
     @oauth_callback != true
   end
-  
+
   enum role: [:user, :admin]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
