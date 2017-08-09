@@ -12,7 +12,7 @@
 class TimeTracker < ApplicationRecord
 
   belongs_to :category
-  belongs_to :project
+  belongs_to :task
   belongs_to :user
 
 end
