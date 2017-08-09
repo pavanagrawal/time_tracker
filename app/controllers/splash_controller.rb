@@ -15,7 +15,7 @@ class SplashController < ApplicationController
       begin
         task_id, category_id, timesheet_date = key.split('$')
         puts "timesheet_date #{timesheet_date}"
-        timesheet_date = Date.parse(timesheet_date, '%m-%d-%Y')
+        timesheet_date = Date.parse(timesheet_date)
         mins = value
         time_track = current_user.time_trackers.find_or_create_by(task_id: task_id, category_id: category_id, billable_date: timesheet_date)
         time_track.update(time_consumed: mins.to_i)
