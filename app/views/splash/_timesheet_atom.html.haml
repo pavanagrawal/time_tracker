@@ -1,0 +1,22 @@
+- current_date = week_start_date = Date.today.at_beginning_of_week(start_day = :monday)
+- week_end_date = Date.today.at_end_of_week(start_day = :monday)
+
+%tr.week-view-entry{:style => "display: table-row;"}
+  %td.name
+    .project-client
+      %span.project Agewize SOW 03132017
+      %span.client (Agewize)
+    .task Engineering
+  - while(current_date <= week_end_date) do
+    %td.day.test-not-today
+      %input.docker-input.js-compound-entry{:tabindex => "1", :type => "text", :value => ""}/
+    - current_date += 1
+  %td.total 3:00
+  %td.delete.js-end-of-week-row.test-zero-hours
+    %button.hui-button.hui-button-tiny.button-icon-only.week-row-delete.js-remove-row{:tabindex => "1", :title => "Delete Row", :type => "button"}
+      %i{"data-icon" => "x"}
+    .popover.popover-confirm.is-down-right.popover-week-delete{"aria-hidden" => "true"}
+      %p Remove entries from timesheet?
+      .buttons
+        %button.hui-button.hui-button-small.hui-button-important.js-confirm-delete-entry.js-bubble{:type => "button"} Delete
+        %button.hui-button.hui-button-small.hui-button-cancel.js-cancel-delete-entry.js-bubble{:type => "button"} Cancel

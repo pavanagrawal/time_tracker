@@ -31,6 +31,18 @@ class User < ApplicationRecord
 
   has_many :allocations
 
+  has_many :projects, through: :allocations
+
+  has_many :current_week_allocations, through: :allocations
+
+
+  def current_week_projects
+    d = Date.today
+    week_start_date = d.at_beginning_of_week
+    week_end_date = d.at_end_of_week
+    projects.where("allocations.start_date <= '#{week_start_date.to_s(:db)}'").where("allocations.end_date >= '#{week_end_date.to_s(:db)}'")
+  end
+
   def name
     email
   end
