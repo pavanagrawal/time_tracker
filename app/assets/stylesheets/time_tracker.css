@@ -1,0 +1,232 @@
+
+.week-view-table {
+    border-collapse: separate;
+    color: #666;
+    font-size: 15px;
+    position: relative;
+    width: 100%;
+}
+
+.week-view-table td {
+    border-bottom: 1px solid #ccc;
+    line-height: 1.2;
+    margin: 0;
+    padding: 12px 5px;
+    text-align: right;
+    vertical-align: middle
+}
+
+.week-view-table .name {
+    padding-left: 10px;
+    text-align: left
+}
+
+.week-view-table .focused-entry .name {
+    border-left: 5px solid #bbb;
+    padding-left: 5px
+}
+
+.week-view-table .day {
+    width: 60px
+}
+
+.week-view-table .day.is-today {
+    background-color: #f6f6f6
+}
+
+.week-view-table .total {
+    color: #999;
+    width: 66px
+}
+
+.week-view-table .delete {
+    padding-right: 10px;
+    width: 44px
+}
+
+.week-view-table .zero-total {
+    color: #ccc !important
+}
+
+.week-view-table thead td, .week-view-table tfoot td {
+    background-color: #eee;
+    background-image: linear-gradient(#f6f6f6, #e6e6e6);
+    padding: 10px 5px;
+    position: relative;
+    text-shadow: 0 1px 0 #fff
+}
+
+.week-view-table .focused-day {
+    background-color: #e4e4e4;
+    background-image: linear-gradient(#e4e4e4, #d4d4d4);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5)
+}
+
+.week-view-table thead td {
+    border-top: 1px solid #ccc;
+    padding: 8px 5px
+}
+
+.week-view-table thead .day > a {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 2px 5px 1px;
+    text-decoration: none
+}
+
+.week-view-table thead .day > a:focus {
+    box-shadow: 0 0 6px rgba(80, 167, 238, 0.6)
+}
+
+.week-view-table thead .day span {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 16px
+}
+
+.week-view-table tfoot .day {
+    color: #999;
+    padding-left: 0;
+    padding-right: 10px
+}
+
+.week-view-table tfoot .total {
+    color: #444;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 600
+}
+
+.week-view-table thead .name {
+    border-left: 1px solid #ccc;
+    border-top-left-radius: 6px
+}
+
+.week-view-table tfoot .name {
+    border-left: 1px solid #ccc;
+    border-bottom-left-radius: 6px
+}
+
+.week-view-table thead .delete {
+    border-right: 1px solid #ccc;
+    border-top-right-radius: 6px
+}
+
+.week-view-table tfoot .delete {
+    border-right: 1px solid #ccc;
+    border-bottom-right-radius: 6px
+}
+
+.week-view-table.floating-week-view-table thead td {
+    border-top: 0
+}
+
+.week-view-table.floating-week-view-table thead .name {
+    border-top-left-radius: 0
+}
+
+.week-view-table.floating-week-view-table thead .delete {
+    border-top-right-radius: 0
+}
+
+.week-view-entry .name {
+    font-size: 13px
+}
+
+.week-view-entry .project-client {
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 600;
+    margin-bottom: 3px;
+    width: 425px
+}
+
+.week-view-entry .project-client > span {
+    display: inline-block;
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.week-view-entry .project {
+    margin-right: 2px
+}
+
+.week-view-entry .client {
+    color: #444;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    font-weight: normal
+}
+
+.week-view-entry .task {
+    color: #555
+}
+
+.week-view-entry .day > input {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 600;
+    padding: 0 5px 0 0;
+    text-align: right
+}
+
+.week-view-entry .day > input:focus {
+    background: #fffcde
+}
+
+.week-view-entry .day > span {
+    padding-right: 5px
+}
+
+.week-view-entry .delete {
+    position: relative
+}
+
+.week-view-entry .has-timer-running {
+    color: #0f6bb9;
+    font-weight: 500
+}
+
+.week-view-entry.is-locked {
+    background: #eee
+}
+
+.week-view-entry.is-locked .is-today {
+    background: #eee
+}
+
+.popover-week-delete {
+    font-size: 13px;
+    margin: 3px 3px 0 0;
+    width: 230px
+}
+
+.last-saved {
+    background: #fffcde;
+    color: #888;
+    font-size: 11px;
+    margin: 0 5px;
+    padding: 2px 5px
+}
+
+.docker-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #fff;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    color: #444;
+    display: inline-block;
+    font-size: 15px;
+    height: 34px;
+    padding: 0 8px;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+}
