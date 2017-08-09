@@ -7,4 +7,7 @@
 class Project < ApplicationRecord
   has_many :allocations
   validates :name, presence: true
+
+  has_many :tasks
+
 end

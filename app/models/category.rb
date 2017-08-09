@@ -18,4 +18,5 @@ class Category < ApplicationRecord
   has_many :time_trackers
 
   validates :name, presence: true
+
 end
