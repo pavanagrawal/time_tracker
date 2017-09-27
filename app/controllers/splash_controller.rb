@@ -1,6 +1,6 @@
 class SplashController < ApplicationController
   skip_before_action :authenticate
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   skip_before_action :verify_authenticity_token
 
